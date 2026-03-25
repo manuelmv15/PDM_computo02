@@ -34,10 +34,9 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-
-
         rv_producto = findViewById(R.id.rvProducto);
 
+        // Configurar LayoutManager horizontal
         rv_producto.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         data = new ArrayList<>();
@@ -64,23 +63,8 @@ public class MainActivity extends AppCompatActivity {
         data.add(new Producto(R.drawable.img,"papayarayada",10,10));
         data.add(new Producto(R.drawable.img,"papayarayada",10,10));
 
-
-
-
-
-
-
-
-
-
-        rv_producto.setLayoutManager(new LinearLayoutManager(this));
-
         // 3) Adapter
         adapter = new producto_adapter(data);
         rv_producto.setAdapter(adapter);
-
-
-
-
     }
 }
