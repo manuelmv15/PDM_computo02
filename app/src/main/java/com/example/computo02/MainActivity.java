@@ -1,5 +1,6 @@
 package com.example.computo02;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -7,8 +8,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.computo02.adaptedores.producto_adapter;
+import com.example.computo02.modelos.Producto;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    public RecyclerView rv_producto;
+    public ArrayList<Producto> data;
+
+    public producto_adapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +33,54 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+
+        rv_producto = findViewById(R.id.rvProducto);
+
+        rv_producto.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        data = new ArrayList<>();
+
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+        data.add(new Producto(R.drawable.img,"papayarayada",10,10));
+
+
+
+
+
+
+
+
+
+
+        rv_producto.setLayoutManager(new LinearLayoutManager(this));
+
+        // 3) Adapter
+        adapter = new producto_adapter(data);
+        rv_producto.setAdapter(adapter);
+
+
+
+
     }
 }
