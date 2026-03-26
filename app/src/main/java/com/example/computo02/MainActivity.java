@@ -76,13 +76,9 @@ public class MainActivity extends AppCompatActivity {
         String strCantidad = edCantidad.getText().toString();
         int cantidad = 0;
         try {
-
              cantidad =  Integer.parseInt(strCantidad);
         } catch (Exception e) {
-
-
-
-
+            Log.i("DEBUG",e.toString());
         }
 
         if (cantidad <1){

@@ -61,6 +61,7 @@ public class Producto_Adapter extends RecyclerView.Adapter<Producto_Adapter.Prod
 
             holder.btn.setText("Agregar");
             holder.btn.setOnClickListener(v -> {
+                activity.edCantidad.setText("");
                 activity.agregarAlCarrito(p);
             });
 
