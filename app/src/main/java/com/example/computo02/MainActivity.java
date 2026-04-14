@@ -46,23 +46,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        edCantidad =findViewById(R.id.etComentario);
+        edCantidad = findViewById(R.id.etComentario);
 
         rvProducto = findViewById(R.id.rvProducto);
         data = new ArrayList<>();
-        data.add(new Producto(R.drawable.ic_launcher_foreground,"android",10.00));
-        data.add(new Producto(R.drawable.ic_launcher_foreground,"android",10.00));
-        data.add(new Producto(R.drawable.ic_launcher_foreground,"android",10.00));
-        data.add(new Producto(R.drawable.ic_launcher_foreground,"android",10.00));
-        data.add(new Producto(R.drawable.ic_launcher_foreground,"android",10.00));
-        rvProducto.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-        adapter = new Producto_Adapter(data,this);
+        data.add(new Producto(R.drawable.ic_launcher_foreground, "android", 10.00));
+        data.add(new Producto(R.drawable.ic_launcher_foreground, "android", 10.00));
+        data.add(new Producto(R.drawable.ic_launcher_foreground, "android", 10.00));
+        data.add(new Producto(R.drawable.ic_launcher_foreground, "android", 10.00));
+        data.add(new Producto(R.drawable.ic_launcher_foreground, "android", 10.00));
+        rvProducto.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        adapter = new Producto_Adapter(data, this);
         rvProducto.setAdapter(adapter);
         rvCarrito = findViewById(R.id.rvCarrito);
 
 
-
-        rvCarrito.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        rvCarrito.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         listaCarrito = new ArrayList<>();
         adapterCarrito = new Producto_Adapter(listaCarrito);
         rvCarrito.setAdapter(adapterCarrito);
@@ -74,16 +73,23 @@ public class MainActivity extends AppCompatActivity {
 
 
         String strCantidad = edCantidad.getText().toString();
+
+        Log.i("DEBUG", strCantidad);
         int cantidad = 0;
+
+
         try {
-             cantidad =  Integer.parseInt(strCantidad);
+            cantidad = Integer.parseInt(strCantidad);
+
+            Log.i("DEBUG", String.valueOf(cantidad));
         } catch (Exception e) {
-            Log.i("DEBUG",e.toString());
+            Log.i("DEBUG", e.toString());
         }
 
-        if (cantidad <1){
+        if (cantidad < 1) {
 
-            Toast.makeText(this, "Solo numeros enteros", Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(this, "Solo numeros enteros " + cantidad, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -92,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
         listaCarrito.add(p); // Añades a la lista del segundo RecyclerView
         adapterCarrito.notifyDataSetChanged(); // Le avisas al segundo adapter que hay datos nuevos
-        Log.i("DEBG",p.nombre + " agregado");
+        Log.i("DEBG", p.nombre + " agregado");
 
 
     }
@@ -102,19 +108,17 @@ public class MainActivity extends AppCompatActivity {
 
         double Total = 0;
 
+        if (listaCarrito.size() > 0) {
+            for (Producto p :
+                    listaCarrito) {
 
-
-            if (listaCarrito.size()>0){
-                for (Producto p:
-                     listaCarrito) {
-
-                    Total += p.subtota();
-                }
+                Total += p.subtota();
             }
+        }
 
-            listaCarrito.clear();
+        listaCarrito.clear();
 
-            adapterCarrito.notifyDataSetChanged();
+        adapterCarrito.notifyDataSetChanged();
 
         Toast.makeText(this, "Total: " + Total, Toast.LENGTH_SHORT).show();
 
