@@ -8,14 +8,17 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
-import androidx.core.view.ContentInfoCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.room.Room;
+
+import com.example.computo02.basededatos.AppDataBase;
+import com.example.computo02.daos.FacturasDao;
+import com.example.computo02.entitys.Clientes;
 
 public class MainActivity extends AppCompatActivity {
-
-
-    TextView tvMostrar;
+    private TextView lblMensaje;
+    private AppDataBase appDataBase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,21 +28,27 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
-
-
-
-
-
         });
 
+        SharedPreferences sharedPreferences = getSharedPreferences("data_temp", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("Token", "12345");
+        editor.apply();
 
-        tvMostrar = findViewById(R.id.tvMostrar);
+        this.lblMensaje = findViewById(R.id.tvMostrar);
 
-        SharedPreferences archivo = getSharedPreferences("data_tem", Context.MODE_PRIVATE);
-        SharedPreferences.Editor edit  = archivo.edit();
-        edit.putString("TOKEN", "1234");
-        edit.apply();
+        lblMensaje.setText(sharedPreferences.getString("Token","No encontrado"));
 
-        tvMostrar.setText(archivo.getString("TOKEN", "No encontrado"));
+        appDataBase = Room.databaseBuilder(
+                        getApplicationContext(),AppDataBase.class, "db_facturas").
+                allowMainThreadQueries().
+                build();
+
+        Clientes clientes = new Clientes();
+        clientes.nombre = "Cristian";
+        //clientes.idClientes = 1;
+
+        FacturasDao facturasDao = appDataBase.facturasDao();
+        facturasDao.inserCliente(clientes);
     }
 }
