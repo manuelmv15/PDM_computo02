@@ -14,5 +14,6 @@ public class ClientesFacturas {
     @Relation(parentColumn = "idClientes",
             entityColumn = "idClientes")
     public List<Facturas> facturas;
+    //
 
 }
