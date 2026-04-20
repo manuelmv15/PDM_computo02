@@ -49,11 +49,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnComprar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Comprar"
+        app:backgroundTint="@null"
+        android:textColor="@color/textPrimary"
+        android:background="@drawable/bg_button_primary"
         android:onClick="Comprar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

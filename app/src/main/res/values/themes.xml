@@ -6,4 +6,6 @@
     </style>
 
     <style name="Theme.Computo02" parent="Base.Theme.Computo02" />
+
+    <style name="Theme.MiAppPersonalizada" parent="Theme.Computo02" />
 </resources>

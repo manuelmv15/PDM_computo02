@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.Title" parent="android:TextAppearance">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+    <style name="TextAppearance.Subtitle" parent="android:TextAppearance">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/textSecondary</item>
+    </style>
+    <style name="Widget.Button.Primary" parent="Widget.Material3.Button">
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="android:paddingLeft">14dp</item>
+        <item name="android:paddingRight">14dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+    </style>
+    <style name="Widget2.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">18dp</item>
+    </style>
+
+    <style name="ButtonStyle.Action" parent="Widget.Material3.Button">
+        <item name="android:backgroundTint">@color/primaryColor</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>
